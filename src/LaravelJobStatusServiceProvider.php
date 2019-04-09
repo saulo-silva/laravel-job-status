@@ -61,7 +61,7 @@ class LaravelJobStatusServiceProvider extends ServiceProvider
             $payload = $job->payload();
             $jobStatus = unserialize($payload['data']['command']);
 
-            if (!is_callable([$jobStatus, 'getJobStatusId'])) {
+            if (!method_exists([$jobStatus, 'getJobStatusId'])) {
                 return null;
             }
 
